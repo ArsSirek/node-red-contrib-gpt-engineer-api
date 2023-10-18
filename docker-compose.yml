@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  gpt-engineer:
+    image: mygptengineer:latest
+    volumes:
+      - ./projects:/projects
+    ports:
+      - "2222:22"
+  mynodered:
+    image: nodered/node-red:latest
+    volumes:
+      - /home/arsen/work/mserver/projects/nodered:/nodered
+      - ./projects:/projects
+      - myNodeREDdata:/data
+    ports:
+      - "1880:1880"
+volumes:
+  myNodeREDdata:

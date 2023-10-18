@@ -5,10 +5,14 @@
 		category: 'config',
 		defaults: {
 			name: { value: "gpt-engineer-config" },
+            sshHost: { value: "gpt-engineer" },
+            sshUser: { value: "sshuser"},
+            sshPort: { value: "22"},
 		},
 		credentials: {
             orgId: {value: '', required: true},
-            apiKey: {value: '', required: true}
+            apiKey: {value: '', required: true},
+            sshPassword: {value: '', required: true},
 		},
         color: "rgb(36, 165, 222)",
 		label: function() {
@@ -29,5 +33,21 @@
     <div class="form-row">
         <label for="node-config-input-apiKey"><i class="fa fa-lock"></i> API Key</label>
         <input type="text" id="node-config-input-apiKey">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-sshHost"><i class="fa fa-user"></i> ssh Host</label>
+        <input type="text" id="node-config-input-sshHost" placeholder="localhost">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-sshUser"><i class="fa fa-user"></i> ssh User</label>
+        <input type="text" id="node-config-input-sshUser" placeholder="ssh username">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-sshPassword"><i class="fa fa-lock"></i> ssh Password</label>
+        <input type="text" id="node-config-input-sshPassword">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-sshPort"><i class="fa fa-user"></i> ssh Port</label>
+        <input type="text" id="node-config-input-sshPort" placeholder="sshPort">
     </div>
 </script>

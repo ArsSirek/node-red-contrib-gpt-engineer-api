@@ -1,0 +1,128 @@
+[
+  {
+    "id": "bd9b5761.fb4918",
+    "type": "debug",
+    "z": "af88384ca82a713d",
+    "name": "",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 370,
+    "y": 380,
+    "wires": []
+  },
+  {
+    "id": "b18a50dd.f7e5c",
+    "type": "uibuilder",
+    "z": "af88384ca82a713d",
+    "name": "",
+    "topic": "",
+    "url": "chat",
+    "fwdInMessages": false,
+    "allowScripts": false,
+    "allowStyles": false,
+    "copyIndex": true,
+    "templateFolder": "blank",
+    "extTemplate": "",
+    "showfolder": false,
+    "reload": false,
+    "sourceFolder": "src",
+    "deployedVersion": "6.5.0",
+    "showMsgUib": false,
+    "title": "",
+    "descr": "",
+    "x": 370,
+    "y": 320,
+    "wires": [
+      [
+        "76678044.5aaeb",
+        "b193acf0c27d5810"
+      ],
+      [
+        "bd9b5761.fb4918"
+      ]
+    ]
+  },
+  {
+    "id": "daa3273b0d2dc998",
+    "type": "gpt-engineer",
+    "z": "af88384ca82a713d",
+    "name": "GptEngineer",
+    "config": "111e8839011497ff",
+    "payload": "payload",
+    "x": 610,
+    "y": 520,
+    "wires": [
+      [
+        "93f07667d92c3fe9",
+        "b18a50dd.f7e5c"
+      ]
+    ]
+  },
+  {
+    "id": "93f07667d92c3fe9",
+    "type": "debug",
+    "z": "af88384ca82a713d",
+    "name": "debug 9",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 900,
+    "y": 520,
+    "wires": []
+  },
+  {
+    "id": "b193acf0c27d5810",
+    "type": "function",
+    "z": "af88384ca82a713d",
+    "name": "initial prompt",
+    "func": "if (!flow.get(msg.uniqueID)) {\n    flow.set(msg.uniqueID, new Map());\n}\n\nconst uniqueStorage = flow.get(msg.uniqueID);\n\nif (!uniqueStorage.get('isInProgress')) {\n    uniqueStorage.set('isInProgress', true);\n    // first message\n    msg.payload = {\n        topic: 'prompt',\n        uniqueID: msg.uniqueID,\n        value: msg.payload,\n        projectName: msg.uniqueID,\n    }\n} else {\n    msg.payload = {\n        topic: 'response',\n        value: msg.payload,\n        uniqueID: msg.uniqueID,\n    }\n}\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 370,
+    "y": 520,
+    "wires": [
+      [
+        "daa3273b0d2dc998"
+      ]
+    ]
+  },
+  {
+    "id": "76678044.5aaeb",
+    "type": "debug",
+    "z": "af88384ca82a713d",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 650,
+    "y": 300,
+    "wires": []
+  },
+  {
+    "id": "111e8839011497ff",
+    "type": "gpt-engineer-config",
+    "name": "gpt-engineer-config",
+    "sshHost": "gpt-engineer",
+    "sshUser": "sshuser",
+    "sshPort": "22"
+  }
+]
