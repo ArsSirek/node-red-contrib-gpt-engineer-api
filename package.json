@@ -1,0 +1,41 @@
+{
+  "name": "node-red-contrib-gpt-engineer-api",
+  "version": "1.0.0",
+  "description": "adds Node to call  gpt-engineer through ssh connection and cli commands",
+  "main": "gpt-engineer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/ArsSirek/node-red-contrib-openai-wrapper/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArsSirek/node-red-contrib-openai-wrapper.git"
+  },
+  "keywords": [
+    "node-red",
+    "openai",
+    "chatgpt",
+    "gpt-engineer",
+    "cli"
+  ],
+  "node-red": {
+    "version": ">=2.0.0",
+    "nodes": {
+      "gpt-engineer": "gpt-engineer.js",
+      "gpt-engineer-config": "gpt-engineer-config.js"
+    }
+  },
+  "author": "Arsen Sirekanyan",
+  "license": "ISC",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "homepage": "https://github.com/ArsSirek/node-red-contrib-gpt-engineer-api#readme",
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+  }
+}

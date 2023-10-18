@@ -1,0 +1,36 @@
+<script type="text/javascript">
+	RED.nodes.registerType('gpt-engineer', {
+		category: "openai",
+		defaults: {
+			name: {value: "GptEngineer"},
+            config: {value: "", type: "gpt-engineer-config", required: true},
+			payload: {value: "payload", required: true},
+		},
+		inputs: 2,
+		outputs: 1,
+		color: "rgb(22,229,178)",
+		label: function () {
+			return (this.name || "gpt-engineer")
+		}
+	});
+</script>
+
+<script type="text/html" data-template-name="gpt-engineer">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name"/>
+    </div>
+    <div class="form-row">
+        <label for="node-input-config"><i class="icon-bookmark"></i> Api Config</label>
+        <input type="text" id="node-input-config"/>
+    </div>
+    <div class="form-row">
+        <label for="node-input-payload"><i class="icon-bookmark"></i> Payload field</label>
+        <input type="text" id="node-input-payload"/>
+    </div>
+
+</script>
+
+<script type="text/html" data-help-name="gpt-engineer">
+    <a href="https://github.com/AntonOsika/gpt-engineer">gpt-engineer calls wrapper</a>
+</script>
